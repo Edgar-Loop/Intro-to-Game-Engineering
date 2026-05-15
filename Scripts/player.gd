@@ -5,10 +5,8 @@ const SPEED = 175.0
 const JUMP_VELOCITY = -300.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var dash_timer: Timer = $DashTimer
 
 var double_jump : bool = false
-var can_dash : bool = true
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor() and double_jump == true:
@@ -51,5 +49,3 @@ func _physics_process(delta: float) -> void:
 	
 func jump():
 	velocity.y = JUMP_VELOCITY
-	
-	
