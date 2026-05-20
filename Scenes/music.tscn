@@ -5,3 +5,4 @@
 [node name="Music" type="AudioStreamPlayer2D" unique_id=336794503]
 stream = ExtResource("1_fbmny")
 autoplay = true
+bus = &"Music"

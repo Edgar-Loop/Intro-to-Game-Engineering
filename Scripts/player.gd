@@ -5,6 +5,9 @@ const SPEED = 175.0
 const JUMP_VELOCITY = -300.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player_2: AnimationPlayer = $AnimationPlayer2
+
 
 var double_jump : bool = false
 
@@ -19,10 +22,12 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Jump"):
 		if is_on_floor():
 			jump()
+			animation_player.play("Jump")
 		elif double_jump == false:
 			double_jump = true
 			jump()
-
+			animation_player_2.play("DoubleJump")
+			
 	# Get the input direction: -1, 0, 1
 	var direction = Input.get_axis("Move_Left", "Move_Right")
 	
@@ -49,3 +54,4 @@ func _physics_process(delta: float) -> void:
 	
 func jump():
 	velocity.y = JUMP_VELOCITY
+	

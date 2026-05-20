@@ -1,6 +1,43 @@
 [gd_scene format=3 uid="uid://bt65dv18c6mue"]
 
 [ext_resource type="Script" uid="uid://n8422qfnd1j" path="res://Scripts/killzone.gd" id="1_jvagm"]
+[ext_resource type="AudioStream" uid="uid://0aak3xwxjqsk" path="res://Assets/sounds/sfx_disappear.ogg" id="2_iyfga"]
+
+[sub_resource type="Animation" id="Animation_ca4vh"]
+resource_name = "Dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DyingSound:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_on6up"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DyingSound:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eer7d"]
+_data = {
+&"Dead": SubResource("Animation_ca4vh"),
+&"RESET": SubResource("Animation_on6up")
+}
 
 [node name="Killzone" type="Area2D" unique_id=1036943519]
 collision_mask = 2
@@ -9,6 +46,13 @@ script = ExtResource("1_jvagm")
 [node name="Timer" type="Timer" parent="." unique_id=1667557576]
 wait_time = 0.6
 one_shot = true
+
+[node name="DyingSound" type="AudioStreamPlayer2D" parent="." unique_id=264562937]
+stream = ExtResource("2_iyfga")
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1472545532]
+libraries/ = SubResource("AnimationLibrary_eer7d")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
