@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bpymcykvoakmo" path="res://Scripts/slime.gd" id="1_aiwxb"]
 [ext_resource type="Texture2D" uid="uid://blevi38dca5sf" path="res://Assets/enemies/Red Slime Spritesheet.png" id="1_swwnm"]
 [ext_resource type="PackedScene" uid="uid://bt65dv18c6mue" path="res://Scenes/killzone.tscn" id="2_aiwxb"]
+[ext_resource type="Script" uid="uid://dpks084by6jbl" path="res://Scripts/headsquish.gd" id="4_paq7w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_paq7w"]
 atlas = ExtResource("1_swwnm")
@@ -48,7 +49,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y26kt"]
-size = Vector2(12, 9)
+size = Vector2(12, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paq7w"]
+size = Vector2(8, 2)
 
 [node name="Slime" type="Node2D" unique_id=1455750319]
 script = ExtResource("1_aiwxb")
@@ -62,7 +66,7 @@ frame_progress = 0.7549088
 [node name="Killzone" parent="." unique_id=1036943519 instance=ExtResource("2_aiwxb")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=1901509381]
-position = Vector2(0, -4.5)
+position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_y26kt")
 
 [node name="RayCastRight" type="RayCast2D" parent="." unique_id=2034861876]
@@ -71,4 +75,14 @@ target_position = Vector2(7, 0)
 
 [node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1695549026]
 position = Vector2(0, -5)
-target_position = Vector2(-6, 0)
+target_position = Vector2(-7, 0)
+
+[node name="Headsquish" type="Area2D" parent="." unique_id=878969204]
+collision_mask = 2
+script = ExtResource("4_paq7w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Headsquish" unique_id=250144015]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_paq7w")
+
+[connection signal="body_entered" from="Headsquish" to="Headsquish" method="_on_body_entered"]

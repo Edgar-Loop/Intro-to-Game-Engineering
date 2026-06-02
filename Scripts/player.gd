@@ -52,6 +52,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-func jump():
-	velocity.y = JUMP_VELOCITY
+func jump(multi : float = 1):
+	velocity.y = JUMP_VELOCITY * multi
 	

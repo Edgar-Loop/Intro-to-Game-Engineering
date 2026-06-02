@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://c21jooqcm3vp0" path="res://Assets/tilesets/props.png" id="6_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://dcit06q8g8agv" path="res://Scenes/slime.tscn" id="7_1l0tm"]
 [ext_resource type="FontFile" uid="uid://b1sok8rogoead" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://c026uqpmri0rw" path="res://Scenes/CherryBounce.tscn" id="11_o5yvi"]
+[ext_resource type="PackedScene" uid="uid://cd6x42a8sxtdh" path="res://Scenes/fast_slime.tscn" id="12_rku1e"]
 
 [sub_resource type="Animation" id="Animation_wrm1d"]
 resource_name = "Move"
@@ -481,6 +483,17 @@ text = "I guess nobody is home..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label8" type="Label" parent="Labels" unique_id=1757372099]
+offset_left = 644.0
+offset_top = 151.0
+offset_right = 849.0
+offset_bottom = 174.0
+scale = Vector2(0.530289, 0.8920215)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_v158k")
+theme_override_font_sizes/font_size = 8
+text = "Cherries will boost you up"
+
 [node name="Platforms" type="Node" parent="." unique_id=562869207]
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Platforms" unique_id=671131453]
@@ -514,11 +527,14 @@ position = Vector2(648, -256)
 [node name="Slime3" parent="Enemies" unique_id=2124010690 instance=ExtResource("7_1l0tm")]
 position = Vector2(904, -336)
 
-[node name="Slime4" parent="Enemies" unique_id=1686692263 instance=ExtResource("7_1l0tm")]
-position = Vector2(984, -128)
-
 [node name="Slime5" parent="Enemies" unique_id=1636583543 instance=ExtResource("7_1l0tm")]
 position = Vector2(1032, -144)
+
+[node name="FastSlime" parent="Enemies" unique_id=567636718 instance=ExtResource("12_rku1e")]
+position = Vector2(265, 9)
+
+[node name="FastSlime2" parent="Enemies" unique_id=1695130198 instance=ExtResource("12_rku1e")]
+position = Vector2(951, -135)
 
 [node name="Coins" type="Node" parent="." unique_id=924844964]
 
@@ -662,6 +678,23 @@ position = Vector2(1049, -154)
 
 [node name="Coin47" parent="Coins" unique_id=394311460 instance=ExtResource("4_3dryh")]
 position = Vector2(1033, -154)
+
+[node name="Cherries" type="Node" parent="." unique_id=1883086056]
+
+[node name="CherryBounce" parent="Cherries" unique_id=808941897 instance=ExtResource("11_o5yvi")]
+position = Vector2(647, 171)
+
+[node name="CherryBounce2" parent="Cherries" unique_id=1492688148 instance=ExtResource("11_o5yvi")]
+position = Vector2(1143, -184)
+
+[node name="CherryBounce3" parent="Cherries" unique_id=1897870367 instance=ExtResource("11_o5yvi")]
+position = Vector2(424, 7)
+
+[node name="CherryBounce4" parent="Cherries" unique_id=2075127102 instance=ExtResource("11_o5yvi")]
+position = Vector2(840, -361)
+
+[node name="CherryBounce5" parent="Cherries" unique_id=803135338 instance=ExtResource("11_o5yvi")]
+position = Vector2(471, -729)
 
 [node name="Player" parent="." unique_id=698548692 instance=ExtResource("1_ebmjs")]
 position = Vector2(130, 126)

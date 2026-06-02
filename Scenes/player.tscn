@@ -183,7 +183,7 @@ _data = {
 &"RESET": SubResource("Animation_x3wgy")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=698548692]
+[node name="Player" type="CharacterBody2D" unique_id=698548692 groups=["player"]]
 z_index = 5
 collision_layer = 2
 script = ExtResource("1_cvnsp")

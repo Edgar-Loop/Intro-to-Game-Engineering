@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://cd6x42a8sxtdh"]
+
+[ext_resource type="Script" uid="uid://dp8yrn87klt4" path="res://Scripts/fast_slime.gd" id="1_t632j"]
+[ext_resource type="Texture2D" uid="uid://b7cxul0cp5cm7" path="res://Assets/enemies/Blue Slime Spritesheet.png" id="2_jp3k0"]
+[ext_resource type="PackedScene" uid="uid://bt65dv18c6mue" path="res://Scenes/killzone.tscn" id="3_jp3k0"]
+[ext_resource type="Script" uid="uid://dpks084by6jbl" path="res://Scripts/headsquish.gd" id="4_axbmf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpxx5"]
+atlas = ExtResource("2_jp3k0")
+region = Rect2(48, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyfca"]
+atlas = ExtResource("2_jp3k0")
+region = Rect2(64, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvdek"]
+atlas = ExtResource("2_jp3k0")
+region = Rect2(80, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvmmc"]
+atlas = ExtResource("2_jp3k0")
+region = Rect2(96, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7j60"]
+atlas = ExtResource("2_jp3k0")
+region = Rect2(112, 0, 16, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vcxrm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpxx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyfca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvdek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvmmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7j60")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slrdb"]
+size = Vector2(12, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpxx5"]
+size = Vector2(8, 2)
+
+[node name="FastSlime" type="Node2D" unique_id=567636718]
+position = Vector2(0, -7)
+script = ExtResource("1_t632j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1379485598]
+sprite_frames = SubResource("SpriteFrames_vcxrm")
+autoplay = "default"
+
+[node name="Killzone" parent="." unique_id=1036943519 instance=ExtResource("3_jp3k0")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=1490061219]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_slrdb")
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=1844272919]
+position = Vector2(0, 2)
+target_position = Vector2(7, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1466423468]
+position = Vector2(0, 2)
+target_position = Vector2(-7, 0)
+
+[node name="Headsquish" type="Area2D" parent="." unique_id=309041757]
+collision_mask = 2
+script = ExtResource("4_axbmf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Headsquish" unique_id=1591963081]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_kpxx5")
+
+[connection signal="body_entered" from="Headsquish" to="Headsquish" method="_on_body_entered"]

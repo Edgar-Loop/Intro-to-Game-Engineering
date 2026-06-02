@@ -32,6 +32,10 @@ folder_colors={
 "res://Scripts/": "red"
 }
 
+[global_group]
+
+player=""
+
 [input]
 
 Jump={

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c026uqpmri0rw"]
+
+[ext_resource type="Script" uid="uid://bxjleg3ug4vag" path="res://Scripts/shroombounce.gd" id="1_fl5be"]
+[ext_resource type="Texture2D" uid="uid://b8qp1dsbr3cxw" path="res://Assets/items/fruit.png" id="2_jluoc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3cdf"]
+size = Vector2(11, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i3fd"]
+atlas = ExtResource("2_jluoc")
+region = Rect2(34, 49, 11, 15)
+
+[node name="Shroombounce" type="Area2D" unique_id=808941897]
+collision_mask = 2
+script = ExtResource("1_fl5be")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=112694484]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_m3cdf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1804835005]
+position = Vector2(0.50000006, 2.3841858e-07)
+scale = Vector2(0.99999994, 1.0666667)
+texture = SubResource("AtlasTexture_0i3fd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
