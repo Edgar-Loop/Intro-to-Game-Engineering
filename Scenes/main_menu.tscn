@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cfkhs3hhe28le"]
 
 [ext_resource type="Script" uid="uid://dg2ie1msesn3r" path="res://Scenes/main_menu.gd" id="1_28flt"]
+[ext_resource type="Texture2D" uid="uid://c3u3eef35yj86" path="res://Addons/inventory-slot.png" id="2_48xlc"]
 
 [node name="Main_Menu" type="Control" unique_id=1431297670]
 process_mode = 1
@@ -12,21 +13,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_28flt")
 
-[node name="Panel" type="Panel" parent="." unique_id=1577925916]
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=589588219]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -65.5
-offset_top = -62.5
-offset_right = 65.5
-offset_bottom = 62.5
+offset_left = -240.99997
+offset_top = -196.99998
+offset_right = -93.666626
+offset_bottom = -47.666626
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(3, 3)
+texture = ExtResource("2_48xlc")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1141533239]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect" unique_id=1141533239]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,24 +37,40 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -45.75
-offset_top = -33.0
+offset_top = -46.5
 offset_right = 45.75
-offset_bottom = 33.0
+offset_bottom = 46.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=312385838]
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer" unique_id=312385838]
 layout_mode = 2
 text = "Menu"
 horizontal_alignment = 1
 
-[node name="ButtonPlay" type="Button" parent="Panel/VBoxContainer" unique_id=1014250304]
+[node name="ButtonPlay" type="Button" parent="NinePatchRect/VBoxContainer" unique_id=1014250304]
 layout_mode = 2
 text = "PLAY"
+expand_icon = true
 
-[node name="ButtonQuit" type="Button" parent="Panel/VBoxContainer" unique_id=71633528]
+[node name="Surprise" type="Button" parent="NinePatchRect/VBoxContainer" unique_id=1927255269]
+layout_mode = 2
+text = "???"
+
+[node name="ButtonQuit" type="Button" parent="NinePatchRect/VBoxContainer" unique_id=71633528]
 layout_mode = 2
 text = "QUIT"
 
-[connection signal="pressed" from="Panel/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[node name="Game Name" type="Label" parent="." unique_id=560899006]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 56.0
+offset_right = 480.0
+offset_bottom = 79.0
+scale = Vector2(3, 3)
+text = "Intro To Game Engines"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/Surprise" to="." method="_on_surprise_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]

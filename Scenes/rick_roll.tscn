@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cedrmag17jwt4"]
+
+[ext_resource type="Texture2D" uid="uid://ta5gg7waeew1" path="res://Addons/Screenshot 2026-06-08 215046.png" id="1_0iogp"]
+
+[node name="RickRoll" type="Node2D" unique_id=1454086256]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1983140233]
+position = Vector2(576.5, 323.75)
+scale = Vector2(2.298, 1.5992556)
+texture = ExtResource("1_0iogp")
